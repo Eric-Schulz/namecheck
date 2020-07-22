@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:namecheck/info_screen.dart';
 import 'home_screen.dart';
 import 'package:flutter/services.dart';
+import 'home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +16,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'nameCheck',
-      home: HomeScreen(),
+      initialRoute: HomeScreen.id,
+      routes: {
+        HomeScreen.id: (context) => HomeScreen(),
+        InfoScreen.id: (context) => InfoScreen(),
+    },
     );
   }
 }

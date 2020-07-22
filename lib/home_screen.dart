@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:namecheck/Probability.dart';
+import 'package:namecheck/info_screen.dart';
 import 'package:namecheck/widgets.dart';
 import 'colors.dart';
 import "dart:math";
@@ -9,9 +10,12 @@ import 'style.dart';
 import 'widgets.dart';
 import 'countryCodesParser.dart';
 import 'package:share/share.dart';
-
+import "package:flutter_launcher_icons/android.dart";
 
 class HomeScreen extends StatefulWidget {
+
+  static String id  = "home_screen";
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -88,21 +92,43 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                               ),
-                              Container(
-                                margin: EdgeInsets.only(bottom: 10.0),
-                                alignment: Alignment.bottomRight,
-                                child: Visibility(
-                                  visible: shareButtonVisibility,
-                                  child: IconButton(
-                                      icon: Icon(Icons.share),
-                                      iconSize: 28.0,
-                                      color: Colors.white,
-                                      onPressed: () {
-                                        if(shareButtonVisibility == true){
-                                          Share.share("WOW!🤩 Most people with my name are $age years old and living in $country1, $country2 and $country3 😱//*Download the app and test your name: https://docs.google.com/uc?export=download&id=1y_clZocKgQsrRfHSwI2xbLw5nhKHIMdA *" , subject: "name? Check out this cool App");
-                                        }
-                                      }),
-                                ),
+                              Row(
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.only(bottom: 10.0),
+                                    alignment: Alignment.bottomRight,
+                                    child: Visibility(
+                                      visible: true,
+                                      child: IconButton(
+                                          icon: Hero(
+                                              tag: "infoIcon",child: Icon(Icons.info_outline, color: Colors.white,)),
+                                          iconSize: 35.0,
+                                          color: Colors.white,
+                                          onPressed: () {
+                                            Navigator.pushNamed(context, InfoScreen.id);
+                                          }),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(bottom: 10.0),
+                                    alignment: Alignment.bottomRight,
+                                    child: Visibility(
+                                      visible: shareButtonVisibility,
+                                      child: IconButton(
+                                          icon: Icon(Icons.share),
+                                          iconSize: 35.0,
+                                          color: Colors.white,
+                                          onPressed: () {
+                                            if (shareButtonVisibility == true) {
+                                              Share.share(
+                                                  "WOW!🤩 Most people with my name are $age years old and living in $country1, $country2 and $country3 😱//*Download the app and test your name: https://github.com/Eric-Schulz/namecheck *",
+                                                  subject:
+                                                      "name? Check out this cool App");
+                                            }
+                                          }),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -235,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
       colorizeGradient2();
     }
 
-    if (name.isNotEmpty && name != "n") {
+    if (name.isNotEmpty && name != "n" && !name.contains(" ")) {
       setState(() {
         age = "???";
         country1 = "";
