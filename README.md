@@ -1,4 +1,4 @@
-# DOWNLOADLINK: https://drive.google.com/file/d/19ZqQv0MqJacyajrhjQd-aRaRZ9pnL4Lh/view?usp=sharing
+# DOWNLOAD HERE: https://drive.google.com/file/d/19ZqQv0MqJacyajrhjQd-aRaRZ9pnL4Lh/view?usp=sharing
 
 check your name facts!
 
@@ -8,3 +8,7 @@ https://agify.io/
 
 
 feel free to send me some feedback ^^ 
+
+# Release V1.1 
+-  added a second screen
+-  by clicking the info button, the user gets some informations about the App.
